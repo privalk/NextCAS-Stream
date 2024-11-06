@@ -15,19 +15,17 @@ const emits = defineEmits<{
 <template>
   <div class="relative h-full">
     <div
-      class="absolute top-[calc(50%-3rem)] right-0 top-1/2 translate-y-[-50%] translate-x-[100%] rounded-r-5 overflow-hidden"
-    >
+      class="absolute top-[calc(50%-3rem)] right-[0] top-1/2 translate-y-[-50%] translate-x-[100%] rounded-r-5 overflow-hidden">
       <div class="w-[1.875rem] h-9 bg-[rgba(255,255,255,.2)] flex-center " @click="emits('update:open', !props.open)">
         <div :class="[open ? ' rotate-180 ' : '']" class="i-tabler:chevron-right text-[#e3e3e3] text-xl" />
       </div>
     </div>
 
     <!-- board -->
-    <div class="top-0 left-0 px-3 h-full w-full ">
-      <div
-        v-show="!messages.length"
-        class="flex-center w-full h-full rounded-[1.25rem] bg-[rgba(34,34,34,0.5)]"
-      >
+    <div class="top-0 left-0 px-0 h-full w-1/2" style="
+    margin-left: 50%;
+">
+      <div v-show="!messages.length" class="flex-center w-full h-full rounded-[1.25rem] bg-[rgba(34,34,34,0.5)]">
         <div class="flex flex-col items-center">
           <img class=" w-16 h-16" src="@/assets/imgs/empty-chat.png">
           <span class=" text-[0.75rem] text-[rgba(255,255,255,0.8)]">

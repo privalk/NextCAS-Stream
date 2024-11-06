@@ -11,10 +11,12 @@
     "dev": "vite"
   },
   "dependencies": {
-    "@nextcas/stream": "0.0.1-beta.19",
+    "@nextcas/stream": "^0.0.1-beta.19",
     "@nextcas/voice": "^1.0.2",
     "@vueuse/core": "^10.9.0",
     "gsap": "^3.12.5",
+    "jose": "^5.9.6",
+    "jsonwebtoken": "^9.0.2",
     "pinia": "^2.1.7",
     "vant": "^4.9.0",
     "vue": "^3.4.24"
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.111",
     "@iconify/utils": "^2.1.23",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20.12.12",
     "@unocss/reset": "^0.60.0",
     "@vant/auto-import-resolver": "^1.1.0",
