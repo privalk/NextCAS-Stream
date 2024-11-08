@@ -13,7 +13,7 @@
   "dependencies": {
     "@nextcas/stream": "^0.0.1-beta.19",
     "@nextcas/voice": "^1.0.2",
-    "@vueuse/core": "^10.9.0",
+    "@vueuse/core": "^10.11.1",
     "gsap": "^3.12.5",
     "jose": "^5.9.6",
     "jsonwebtoken": "^9.0.2",

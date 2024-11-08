@@ -34,7 +34,7 @@ watch(openMessage, (v) => {
   const width = messageBoard.value.clientWidth
   if (!messageBoardTween.value) {
     messageBoardTween.value = gsap.to(messageBoard.value, {
-      translateX: width/2,
+      translateX: width / 2,
       duration: 0.5,
       ease: 'power2.out',
     })
@@ -52,13 +52,22 @@ async function init() {
     simulateProgress() // 开始伪加载进度条动画
     closed.value = false
     await nextTick()
+
+    // 从环境变量中读取配置
+    const ip = import.meta.env.VITE_APP_STREAM_IP
+    const actorId = import.meta.env.VITE_APP_STREAM_ACTOR_ID
+    const avatarId = import.meta.env.VITE_APP_STREAM_AVATAR_ID
+    const sceneId = import.meta.env.VITE_APP_STREAM_SCENE_ID
+    const sceneType = import.meta.env.VITE_APP_STREAM_SCENE_TYPE
+    const resolutionRatio = import.meta.env.VITE_APP_STREAM_RESOLUTION
+    console.log(ip, actorId, avatarId, sceneId, sceneType, resolutionRatio)
     stream.value = await NextStream.createLocal({
-      ip: '127.0.0.1',
-      actorId: 'actor_117034',
+      ip: ip,
+      actorId: actorId,
       container: container.value,
-      avatarId: 'avatar_497449',
-      scene: { id: '6538b8f14b2c896b74ebc0f1', type: 'nus' },
-      resolutionRatio: "1080p",
+      avatarId: avatarId,
+      scene: { id: sceneId, type: sceneType },
+      resolutionRatio: resolutionRatio,
     })
 
     ready.value = true
@@ -124,7 +133,7 @@ provide('streamSDK', () => stream.value)
     <!-- 主体内容 -->
     <template v-else>
       <div ref="container" class="w-full h-full bg-black absolute"></div>
-      
+
       <!-- 进度条 -->
       <div v-if="!ready" class="progress-bar-container">
         <div class="progress-bar" :style="{ width: progressBarWidth + '%' }"></div>
@@ -149,7 +158,7 @@ provide('streamSDK', () => stream.value)
           <!-- 显示加载 GIF -->
           <img src=".\assets\gifs\default.f84195f1.gif" alt="Loading" class="w-full h-full" />
         </div>
-        
+
         <button v-if="ready" @click="_startRender" class="start-btn">
           启动
         </button>
@@ -160,7 +169,7 @@ provide('streamSDK', () => stream.value)
 
 <style scoped>
 .start-btn {
-  
+
   background-color: #5cabff;
   color: white;
   font-size: 1.25rem;
@@ -190,13 +199,13 @@ provide('streamSDK', () => stream.value)
   width: 80%;
   height: 5px;
   background-color: rgba(0, 0, 0, 0.2);
-  z-index: 200 ;
+  z-index: 200;
 }
 
 .progress-bar {
   height: 100%;
   background-color: #ffffff;
-  z-index: 200 ;
+  z-index: 200;
 }
 
 .w-full {
